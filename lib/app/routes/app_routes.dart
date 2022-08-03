@@ -1,0 +1,30 @@
+part of 'app_pages.dart';
+// DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
+
+abstract class Routes {
+  Routes._();
+  static const HOME = _Paths.HOME;
+  static const ROOT = _Paths.ROOT;
+  static const PROFILE = _Paths.PROFILE;
+  static const COLLECT = _Paths.COLLECT;
+  static const EVENT = _Paths.EVENT;
+  static const SEARCH = _Paths.SEARCH;
+  static const MUSIC = _Paths.MUSIC;
+  static const SETTINGS = _Paths.SETTINGS;
+  static const EVENT_DETAIL = _Paths.EVENT_DETAIL;
+  static const PLAY = _Paths.PLAY;
+}
+
+abstract class _Paths {
+  _Paths._();
+  static const HOME = '/home';
+  static const ROOT = '/root';
+  static const PROFILE = '/profile';
+  static const COLLECT = '/collect';
+  static const EVENT = '/event';
+  static const SEARCH = '/search';
+  static const MUSIC = '/music';
+  static const SETTINGS = '/settings';
+  static const EVENT_DETAIL = '/event-detail';
+  static const PLAY = '/play';
+}
