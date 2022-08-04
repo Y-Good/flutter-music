@@ -102,36 +102,37 @@ class HomeView extends GetView<HomeController> {
               subTitle: 'Curated by our team',
             ),
             const SizedBox(height: 16),
-            Container(
-              constraints: const BoxConstraints(maxHeight: 180, minHeight: 160),
-              width: Get.width,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (_, idx) => Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        GAvatar(size: 120, radius: 4),
-                        SizedBox(height: 12),
-                        Text(
-                          'Blinding Lights',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        SizedBox(height: 6),
-                        Text(
-                          'The Weeknd',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF6F6F6F),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: List.generate(
+                    4,
+                    (index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          GAvatar(size: 120, radius: 4),
+                          SizedBox(height: 12),
+                          Text(
+                            'Blinding Lights',
+                            style: TextStyle(fontSize: 14),
                           ),
-                        )
-                      ],
+                          SizedBox(height: 6),
+                          Text(
+                            'The Weeknd',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF6F6F6F),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                itemCount: 4,
               ),
             ),
             const SizedBox(height: 16),

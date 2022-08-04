@@ -14,6 +14,7 @@ class EventView extends GetView<EventController> {
       appBar: AppBar(
         backgroundColor: GColor.backgroundColor,
         elevation: 0,
+        toolbarHeight: 48,
         leadingWidth: 65,
         leading: const Padding(
           padding: EdgeInsets.only(left: 16),
@@ -46,14 +47,15 @@ class EventView extends GetView<EventController> {
         child: Column(
           children: [
             ...List.generate(
-                6,
-                (index) => const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      child: GEventCard(),
-                    ))
+              6,
+              (index) => const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                child: GEventCard(),
+              ),
+            )
           ],
         ),
       ),

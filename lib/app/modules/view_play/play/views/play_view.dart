@@ -25,8 +25,8 @@ class PlayView extends GetView<PlayController> {
           ),
           Positioned(
             top: 48,
-            left: 16,
-            right: 16,
+            left: 12,
+            right: 12,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -43,11 +43,12 @@ class PlayView extends GetView<PlayController> {
           ),
           Obx(() {
             return Positioned(
-              left: 16,
-              right: 16,
+              left: 12,
+              right: 12,
               bottom: c.tHeight.value,
               child: GestureDetector(
-                onVerticalDragUpdate: (d) => c.toTracks(d),
+                onVerticalDragUpdate: (d) => c.upTracks(d),
+                // onVerticalDragDown: (d) => c.downTracks(d),
                 child: Container(
                   height: Get.height / 1.9,
                   decoration: BoxDecoration(
@@ -215,10 +216,13 @@ class PlayView extends GetView<PlayController> {
                             ],
                           ),
                           const Spacer(),
-                          const Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 20,
+                          GestureDetector(
+                            onTap: c.addPlayList,
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 20,
+                            ),
                           ),
                           const SizedBox(width: 16),
                           const Icon(
