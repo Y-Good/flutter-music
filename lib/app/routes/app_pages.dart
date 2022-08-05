@@ -4,6 +4,8 @@ import '../modules/root/bindings/root_binding.dart';
 import '../modules/root/views/root_view.dart';
 import '../modules/view_collect/collect/bindings/collect_binding.dart';
 import '../modules/view_collect/collect/views/collect_view.dart';
+import '../modules/view_collect/play_list/bindings/play_list_binding.dart';
+import '../modules/view_collect/play_list/views/play_list_view.dart';
 import '../modules/view_event/event/bindings/event_binding.dart';
 import '../modules/view_event/event/views/event_view.dart';
 import '../modules/view_event/event_detail/bindings/event_detail_binding.dart';
@@ -20,6 +22,10 @@ import '../modules/view_profile/settings/bindings/settings_binding.dart';
 import '../modules/view_profile/settings/views/settings_view.dart';
 import '../modules/view_search/search/bindings/search_binding.dart';
 import '../modules/view_search/search/views/search_view.dart';
+import '../modules/view_sign_in/bindings/view_sign_in_binding.dart';
+import '../modules/view_sign_in/views/view_sign_in_view.dart';
+import '../modules/view_splash/bindings/view_splash_binding.dart';
+import '../modules/view_splash/views/view_splash_view.dart';
 
 part 'app_routes.dart';
 
@@ -30,15 +36,15 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
       name: _Paths.ROOT,
       page: () => RootView(),
       binding: RootBinding(),
-      bindings: [EventBinding()],
+      bindings: [EventBinding(), CollectBinding()],
+    ),
+    GetPage(
+      name: _Paths.HOME,
+      page: () => HomeView(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.PROFILE,
@@ -79,6 +85,21 @@ class AppPages {
       name: _Paths.PLAY,
       page: () => PlayView(),
       binding: PlayBinding(),
+    ),
+    GetPage(
+      name: _Paths.PLAY_LIST,
+      page: () => PlayListView(),
+      binding: PlayListBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIEW_SIGN_IN,
+      page: () => ViewSignInView(),
+      binding: ViewSignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIEW_SPLASH,
+      page: () => ViewSplashView(),
+      binding: ViewSplashBinding(),
     ),
   ];
 }

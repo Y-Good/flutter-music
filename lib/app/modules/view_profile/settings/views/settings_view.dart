@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:g_music/app/config/g_color.dart';
-import 'package:g_music/app/config/g_iconfont.dart';
 import 'package:get/get.dart';
 
 import '../controllers/settings_controller.dart';
@@ -11,6 +10,7 @@ class SettingsView extends GetView<SettingsController> {
 
   @override
   Widget build(BuildContext context) {
+    final c = controller;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -26,12 +26,12 @@ class SettingsView extends GetView<SettingsController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Account',
               style: TextStyle(fontSize: 14),
             ),
             ...List.generate(
-              4,
+              c.settingList.length,
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Row(
@@ -42,9 +42,13 @@ class SettingsView extends GetView<SettingsController> {
                       decoration: BoxDecoration(
                         color: GColor.white,
                         borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          width: 1.5,
+                          color: Color(0xFFF3F3F3),
+                        ),
                       ),
                       child: Icon(
-                        GIconFont.iconProfileFill,
+                        c.settingList[index].icon,
                         size: 20,
                         color: GColor.primary,
                       ),
@@ -52,11 +56,14 @@ class SettingsView extends GetView<SettingsController> {
                     const SizedBox(width: 16),
                     Expanded(
                       child: Text(
-                        'Profile',
-                        style: TextStyle(fontSize: 16),
+                        c.settingList[index].title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: GColor.secondary900,
+                        ),
                       ),
                     ),
-                    Icon(
+                    const Icon(
                       CupertinoIcons.right_chevron,
                       size: 20,
                     ),

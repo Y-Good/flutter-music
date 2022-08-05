@@ -27,10 +27,13 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
         ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Center(child: GAvatar(size: 40, radius: 20)),
+        actions: [
+          GestureDetector(
+            onTap: () => Get.toNamed(Routes.VIEW_SPLASH),
+            child: Padding(
+              padding: EdgeInsets.only(right: 16),
+              child: Center(child: GAvatar(size: 40, radius: 20)),
+            ),
           )
         ],
       ),

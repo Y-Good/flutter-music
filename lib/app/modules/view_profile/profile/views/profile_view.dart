@@ -89,18 +89,41 @@ class ProfileView extends GetView<ProfileController> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
-                            Text('John Doe', style: TextStyle(fontSize: 24)),
+                          children: [
+                            const Text(
+                              'John Doe',
+                              style: TextStyle(fontSize: 24),
+                            ),
                             Text(
                               'johndoe@gmail.com',
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: GColor.secondary0,
+                              ),
                             )
                           ],
                         ),
                       ),
                       InkWell(
                         onTap: () => Get.toNamed(Routes.SETTINGS),
-                        child: Icon(GIconFont.iconSettingLinear),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: GColor.white,
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(
+                              width: 1,
+                              color: GColor.secondary0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              GIconFont.iconSettingLinear,
+                              size: 16,
+                              color: GColor.secondary0,
+                            ),
+                          ),
+                        ),
                       )
                     ],
                   ),

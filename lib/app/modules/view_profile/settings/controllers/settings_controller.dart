@@ -1,20 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:g_music/app/config/g_iconfont.dart';
 import 'package:get/get.dart';
 
 class SettingsController extends GetxController {
-  //TODO: Implement SettingsController
+  List<SettingItem> get settingList => [
+        SettingItem(GIconFont.iconProfileFill, 'Profile'),
+        SettingItem(GIconFont.iconAudioFill, 'Account Plan'),
+        SettingItem(GIconFont.iconLockFill, 'Security'),
+        SettingItem(GIconFont.iconMusicPlayFill, 'S'),
+        SettingItem(GIconFont.iconFolderFill, 'S'),
+        SettingItem(GIconFont.iconCloudConnectionFill, 'S'),
+      ];
+}
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+class SettingItem {
+  final IconData icon;
+  final String title;
+  SettingItem(this.icon, this.title);
 }
