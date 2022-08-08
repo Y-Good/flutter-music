@@ -20,6 +20,8 @@ import '../modules/view_profile/profile/bindings/profile_binding.dart';
 import '../modules/view_profile/profile/views/profile_view.dart';
 import '../modules/view_profile/settings/bindings/settings_binding.dart';
 import '../modules/view_profile/settings/views/settings_view.dart';
+import '../modules/view_search/artist/bindings/artist_binding.dart';
+import '../modules/view_search/artist/views/artist_view.dart';
 import '../modules/view_search/search/bindings/search_binding.dart';
 import '../modules/view_search/search/views/search_view.dart';
 import '../modules/view_sign_in/bindings/view_sign_in_binding.dart';
@@ -39,7 +41,7 @@ class AppPages {
       name: _Paths.ROOT,
       page: () => RootView(),
       binding: RootBinding(),
-      bindings: [EventBinding(), CollectBinding()],
+      bindings: [EventBinding(), CollectBinding(), HomeBinding()],
     ),
     GetPage(
       name: _Paths.HOME,
@@ -100,6 +102,11 @@ class AppPages {
       name: _Paths.VIEW_SPLASH,
       page: () => ViewSplashView(),
       binding: ViewSplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.ARTIST,
+      page: () => ArtistView(),
+      binding: ArtistBinding(),
     ),
   ];
 }

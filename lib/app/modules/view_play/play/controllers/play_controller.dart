@@ -9,6 +9,8 @@ class PlayController extends GetxController {
   RxDouble volume = 0.0.obs;
   RxBool isOpenLyrics = true.obs;
   RxDouble tHeight = 0.0.obs;
+  double tStart = 0;
+  double tEnd = 0;
   @override
   void onInit() {
     tHeight.value = -Get.height / 1.9 + 70;
@@ -24,9 +26,31 @@ class PlayController extends GetxController {
   }
 
   void upTracks(DragUpdateDetails d) {
-    if (tHeight.value <= 0) {
-      tHeight.value -= d.delta.dy;
+    // print(d.delta.dy);
+    // print(tHeight.value);
+    tHeight.value -= d.delta.dy;
+    if (tHeight.value >= 0) {
+      tHeight.value = 0;
     }
+    if (tHeight.value <= -Get.height / 1.9 + 70) {
+      tHeight.value = -Get.height / 1.9 + 70;
+    }
+  }
+
+  void end(DragEndDetails d) {
+    // tEnd = d.primaryVelocity!;
+    print(d.primaryVelocity!);
+    if (d.primaryVelocity! < tStart) {
+      tHeight.value = 0;
+    } else {
+      tHeight.value = -Get.height / 1.9 + 70;
+    }
+  }
+
+  void start(DragStartDetails d) {
+    print(d.globalPosition.dy);
+
+    tStart = d.globalPosition.dy;
   }
 
   void addPlayList() {

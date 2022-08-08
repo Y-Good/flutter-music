@@ -42,12 +42,16 @@ class PlayView extends GetView<PlayController> {
             child: _buildMusicPlayCard(),
           ),
           Obx(() {
-            return Positioned(
+            return AnimatedPositioned(
               left: 12,
               right: 12,
               bottom: c.tHeight.value,
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.ease,
               child: GestureDetector(
-                onVerticalDragUpdate: (d) => c.upTracks(d),
+                // onVerticalDragUpdate: (d) => c.upTracks(d),
+                onVerticalDragEnd: (d) => c.end(d),
+                onVerticalDragStart: (d) => c.start(d),
                 // onVerticalDragDown: (d) => c.downTracks(d),
                 child: Container(
                   height: Get.height / 1.9,

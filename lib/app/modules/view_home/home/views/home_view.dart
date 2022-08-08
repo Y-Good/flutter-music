@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:g_music/app/components/g_avatar.dart';
+import 'package:g_music/app/components/g_appbar.dart';
+import 'package:g_music/app/components/g_section_title.dart';
 import 'package:g_music/app/components/page/g_event_card.dart';
-import 'package:g_music/app/config/g_color.dart';
-import 'package:g_music/app/config/g_iconfont.dart';
-import 'package:g_music/app/routes/app_pages.dart';
+import 'package:g_music/app/modules/view_home/home/widgets/play_card.dart';
 import 'package:get/get.dart';
 
+import '../../../../components/page/g_scroll_row.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -14,132 +14,17 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 48,
-        backgroundColor: GColor.backgroundColor,
-        elevation: 0,
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 16),
-          child: Center(
-            child: Text(
-              '发现',
-              style: TextStyle(color: Colors.black, fontSize: 20),
-            ),
-          ),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () => Get.toNamed(Routes.VIEW_SPLASH),
-            child: Padding(
-              padding: EdgeInsets.only(right: 16),
-              child: Center(child: GAvatar(size: 40, radius: 20)),
-            ),
-          )
-        ],
-      ),
+      appBar: GAppBar(leadingText: '发现'),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              decoration: BoxDecoration(
-                color: const Color(0xFF0957DE),
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFF004ED5).withOpacity(0.28),
-                    offset: const Offset(0, 29),
-                    blurRadius: 25,
-                    spreadRadius: -30,
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const GAvatar(size: 112, radius: 8),
-                    const SizedBox(width: 16),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'New release',
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Colors.white60,
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        const Text(
-                          'The Thrill Of it All',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'Sam Smith ● 3:42',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white70,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        GestureDetector(
-                          onTap: () => Get.toNamed(Routes.PLAY),
-                          child: Icon(
-                            GIconFont.iconPlayBold,
-                            size: 24,
-                            color: GColor.white,
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-            _buildSectionTitle(
-              title: 'Curated by our team',
+            const PlayCard(),
+            const GScrollRow(
+              title: 'Our recommendation',
               subTitle: 'Curated by our team',
             ),
             const SizedBox(height: 16),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: List.generate(
-                    4,
-                    (index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          GAvatar(size: 120, radius: 4),
-                          SizedBox(height: 12),
-                          Text(
-                            'Blinding Lights',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          SizedBox(height: 6),
-                          Text(
-                            'The Weeknd',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF6F6F6F),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            _buildSectionTitle(
+            const GSectionTitle(
               title: 'Music events',
               subTitle: 'Ticket still available',
             ),
@@ -154,44 +39,6 @@ class HomeView extends GetView<HomeController> {
             )
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildSectionTitle({String? title, String? subTitle}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title ?? '-',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Color(0xFF040815),
-                ),
-              ),
-              const Text(
-                'Show more',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Color(0xFF0957DE),
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 2),
-          Text(
-            subTitle ?? '-',
-            style: const TextStyle(
-              fontSize: 14,
-              color: Color(0xFF6F6F6F),
-            ),
-          ),
-        ],
       ),
     );
   }

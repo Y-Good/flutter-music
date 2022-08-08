@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:g_music/app/components/g_avatar.dart';
 import 'package:g_music/app/components/page/g_event_card.dart';
 import 'package:g_music/app/config/g_color.dart';
 import 'package:get/get.dart';
 
+import '../../../../components/g_appbar.dart';
 import '../controllers/event_controller.dart';
 
 class EventView extends GetView<EventController> {
@@ -11,26 +11,8 @@ class EventView extends GetView<EventController> {
   Widget build(BuildContext context) {
     final c = controller;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: GColor.backgroundColor,
-        elevation: 0,
-        toolbarHeight: 48,
-        leadingWidth: 65,
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 16),
-          child: Center(
-            child: Text(
-              'Event',
-              style: TextStyle(color: Colors.black, fontSize: 20),
-            ),
-          ),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Center(child: GAvatar(size: 40, radius: 20)),
-          )
-        ],
+      appBar: GAppBar(
+        leadingText: 'Event',
         bottom: TabBar(
           controller: c.tabController,
           tabs: c.tabs,

@@ -7,6 +7,8 @@ import 'package:g_music/app/modules/view_profile/profile/views/profile_view.dart
 import 'package:g_music/app/modules/view_search/search/views/search_view.dart';
 import 'package:get/get.dart';
 
+import '../../../components/g_bottom_navigation_bar.dart';
+
 class RootController extends GetxController {
   List<Widget> pages = [
     HomeView(),
@@ -16,21 +18,24 @@ class RootController extends GetxController {
     ProfileView(),
   ];
 
-  List<BottomNavigationBarItem> navBarList = [
-    const BottomNavigationBarItem(icon: Icon(GIconFont.iconHome), label: 'a'),
-    const BottomNavigationBarItem(
-      icon: Icon(GIconFont.iconTicket),
-      label: 'b',
-      activeIcon: Icon(GIconFont.iconTicketFill),
+  List<GBottomNavigationBarItem> navBarList = [
+    GBottomNavigationBarItem(
+        Icon(GIconFont.iconHome), Icon(GIconFont.iconHomeFill)),
+    GBottomNavigationBarItem(
+      Icon(GIconFont.iconTicket),
+      Icon(GIconFont.iconTicketFill),
     ),
-    const BottomNavigationBarItem(icon: Icon(GIconFont.iconSearch), label: 'c'),
-    const BottomNavigationBarItem(
-      icon: Icon(GIconFont.iconArchive1),
-      label: 'd',
+    GBottomNavigationBarItem(
+      Icon(GIconFont.iconSearch),
+      Icon(GIconFont.iconSearchFill),
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(GIconFont.iconProfile),
-      label: 'e',
+    GBottomNavigationBarItem(
+      Icon(GIconFont.iconArchive1),
+      Icon(GIconFont.iconArchive),
+    ),
+    GBottomNavigationBarItem(
+      Icon(GIconFont.iconProfile),
+      Icon(GIconFont.iconProfileFill),
     ),
   ];
 

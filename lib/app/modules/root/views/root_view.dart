@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g_music/app/config/g_color.dart';
 import 'package:get/get.dart';
 
+import '../../../components/g_bottom_navigation_bar.dart';
 import '../controllers/root_controller.dart';
 
 class RootView extends GetView<RootController> {
@@ -11,7 +12,7 @@ class RootView extends GetView<RootController> {
     return Scaffold(
       body: Obx(() => c.pages[c.index.value]),
       bottomNavigationBar: Obx(() {
-        return BottomNavigationBar(
+        return GBottomNavigationBar(
           selectedItemColor: GColor.primary,
           unselectedItemColor: const Color(0xFFB7B7B7),
           items: c.navBarList,
