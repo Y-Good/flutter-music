@@ -19,9 +19,10 @@ class GAvatar extends StatelessWidget {
       child: Image(
         width: size,
         height: size,
+        fit: BoxFit.cover,
         image: NetworkImage(
           url ??
-              'https://img2.baidu.com/it/u=4244269751,4000533845&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1657990800&t=0f42feeba0afd742fa049ad16066ca89',
+              'http://tiebapic.baidu.com/forum/w%3D580/sign=05783a1086cec3fd8b3ea77de689d4b6/054f78f0f736afc3c55bf8b9f619ebc4b6451293.jpg',
         ),
       ),
     );

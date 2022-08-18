@@ -3,10 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:g_music/app/components/g_avatar.dart';
+import 'package:g_music/app/components/g_circular_bg_button.dart';
 import 'package:g_music/app/config/g_color.dart';
-import 'package:g_music/app/config/g_iconfont.dart';
 import 'package:get/get.dart';
 
+import '../../../../config/g_iconfont.dart';
 import '../controllers/play_controller.dart';
 
 class PlayView extends GetView<PlayController> {
@@ -15,24 +16,29 @@ class PlayView extends GetView<PlayController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: const Padding(
+          padding: EdgeInsets.all(12),
+          child: GCircularBgButton(),
+        ),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(12),
+            child: GCircularBgButton(
+              icon: GIconFont.iconArchive1,
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Positioned.fill(
             child: Image.network(
               'https://img1.baidu.com/it/u=2362149191,780203095&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
               fit: BoxFit.cover,
-            ),
-          ),
-          Positioned(
-            top: 48,
-            left: 12,
-            right: 12,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildCircularBg(onTap: () => Get.back()),
-                _buildCircularBg(icon: GIconFont.iconArchive1)
-              ],
             ),
           ),
           Positioned(
@@ -141,25 +147,6 @@ class PlayView extends GetView<PlayController> {
             );
           })
         ],
-      ),
-    );
-  }
-
-  Widget _buildCircularBg({IconData? icon, VoidCallback? onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 32,
-        height: 32,
-        decoration: BoxDecoration(
-          color: GColor.white.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Icon(
-          icon ?? Icons.arrow_back,
-          color: Colors.white,
-          size: 16,
-        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ import '../../../components/g_bottom_navigation_bar.dart';
 
 class RootController extends GetxController {
   List<Widget> pages = [
-    HomeView(),
+    const HomeView(),
     EventView(),
     SearchView(),
     CollectView(),
@@ -20,22 +20,22 @@ class RootController extends GetxController {
 
   List<GBottomNavigationBarItem> navBarList = [
     GBottomNavigationBarItem(
-        Icon(GIconFont.iconHome), Icon(GIconFont.iconHomeFill)),
+        const Icon(GIconFont.iconHome), const Icon(GIconFont.iconHomeFill)),
     GBottomNavigationBarItem(
-      Icon(GIconFont.iconTicket),
-      Icon(GIconFont.iconTicketFill),
+      const Icon(GIconFont.iconTicket),
+      const Icon(GIconFont.iconTicketFill),
     ),
     GBottomNavigationBarItem(
-      Icon(GIconFont.iconSearch),
-      Icon(GIconFont.iconSearchFill),
+      const Icon(GIconFont.iconSearch),
+      const Icon(GIconFont.iconSearchFill),
     ),
     GBottomNavigationBarItem(
-      Icon(GIconFont.iconArchive1),
-      Icon(GIconFont.iconArchive),
+      const Icon(GIconFont.iconArchive1),
+      const Icon(GIconFont.iconArchive),
     ),
     GBottomNavigationBarItem(
-      Icon(GIconFont.iconProfile),
-      Icon(GIconFont.iconProfileFill),
+      const Icon(GIconFont.iconProfile),
+      const Icon(GIconFont.iconProfileFill),
     ),
   ];
 

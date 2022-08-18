@@ -46,11 +46,18 @@ class CollectView extends GetView<CollectController> {
               decoration: BoxDecoration(
                 color: GColor.white,
                 borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: GColor.primary.withOpacity(0.06),
+                    blurRadius: 60,
+                    offset: const Offset(0, 4),
+                  )
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const GAvatar(radius: 4),
+                  const GAvatar(radius: 4, size: 131),
                   const SizedBox(height: 16),
                   Text(
                     'Your playlist',
