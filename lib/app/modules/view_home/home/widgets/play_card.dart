@@ -12,7 +12,9 @@ import '../../../../routes/app_pages.dart';
 /// @CreateDate: 2022-08-08 15:00
 /// @UpdateDate: 2022-08-08 15:00
 class PlayCard extends StatelessWidget {
-  const PlayCard({Key? key}) : super(key: key);
+  PlayCard({Key? key, this.img}) : super(key: key);
+
+  final String? img;
 
   @override
   Widget build(BuildContext context) {
@@ -35,42 +37,47 @@ class PlayCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const GAvatar(size: 112, radius: 8),
+            GAvatar(url: img, size: 112, radius: 8),
             const SizedBox(width: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'New release',
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.white60,
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'New release',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.white60,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                const Text(
-                  'The Thrill Of it All',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-                const SizedBox(height: 4),
-                const Text(
-                  'Sam Smith ● 3:42',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white70,
+                  const SizedBox(height: 12),
+                  const Text(
+                    'The Thrill Of it All',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () => Get.toNamed(Routes.PLAY),
-                  child: Icon(
-                    GIconFont.iconPlayBold,
-                    size: 24,
-                    color: GColor.white,
+                  const SizedBox(height: 4),
+                  const Text(
+                    'Sam Smith ● 3:42',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white70,
+                    ),
                   ),
-                )
-              ],
+                  const SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () => Get.toNamed(Routes.PLAY),
+                      child: Icon(
+                        GIconFont.iconPlayBold,
+                        size: 24,
+                        color: GColor.white,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),

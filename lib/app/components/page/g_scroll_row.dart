@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g_music/app/components/g_section_title.dart';
+import 'package:g_music/app/data/models/personalized_model.dart';
+import 'package:get/get.dart';
 
 import '../g_avatar.dart';
 
@@ -15,10 +17,12 @@ class GScrollRow extends StatelessWidget {
     this.title,
     this.subTitle,
     this.onTap,
+    this.datas,
   }) : super(key: key);
   final String? title;
   final String? subTitle;
   final VoidCallback? onTap;
+  final RxList<Personalized>? datas;
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +36,28 @@ class GScrollRow extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: List.generate(
-                4,
+                datas?.length ?? 5,
                 (index) => GestureDetector(
                   onTap: onTap,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        GAvatar(size: 120, radius: 4),
-                        SizedBox(height: 12),
-                        Text(
-                          'Blinding Lights',
-                          style: TextStyle(fontSize: 14),
+                      children: [
+                        GAvatar(
+                          url: datas?[index].picUrl,
+                          size: 120,
+                          radius: 4,
                         ),
-                        SizedBox(height: 6),
+                        const SizedBox(height: 12),
                         Text(
+                          datas?[index].name ?? 'Blinding Lights',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 6),
+                        const Text(
                           'The Weeknd',
                           style: TextStyle(
                             fontSize: 12,

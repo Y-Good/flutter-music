@@ -18,14 +18,15 @@ class HomeView extends GetView<HomeController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const PlayCard(),
-            const GScrollRow(
-              title: 'Our recommendation',
+            PlayCard(),
+            GScrollRow(
+              title: '每日推荐',
               subTitle: 'Curated by our team',
+              datas: controller.personList,
             ),
             const SizedBox(height: 16),
             const GSectionTitle(
-              title: 'Music events',
+              title: '音乐活动',
               subTitle: 'Ticket still available',
             ),
             ListView.builder(

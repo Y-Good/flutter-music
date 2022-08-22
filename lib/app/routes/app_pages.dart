@@ -24,8 +24,8 @@ import '../modules/view_search/artist/bindings/artist_binding.dart';
 import '../modules/view_search/artist/views/artist_view.dart';
 import '../modules/view_search/search/bindings/search_binding.dart';
 import '../modules/view_search/search/views/search_view.dart';
-import '../modules/view_sign_in/bindings/view_sign_in_binding.dart';
-import '../modules/view_sign_in/views/view_sign_in_view.dart';
+import '../modules/view_sign_in/sign_in/bindings/sign_in_binding.dart';
+import '../modules/view_sign_in/sign_in/views/sign_in_view.dart';
 import '../modules/view_splash/bindings/view_splash_binding.dart';
 import '../modules/view_splash/views/view_splash_view.dart';
 
@@ -94,11 +94,6 @@ class AppPages {
       binding: PlayListBinding(),
     ),
     GetPage(
-      name: _Paths.VIEW_SIGN_IN,
-      page: () => ViewSignInView(),
-      binding: ViewSignInBinding(),
-    ),
-    GetPage(
       name: _Paths.VIEW_SPLASH,
       page: () => ViewSplashView(),
       binding: ViewSplashBinding(),
@@ -107,6 +102,11 @@ class AppPages {
       name: _Paths.ARTIST,
       page: () => ArtistView(),
       binding: ArtistBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGN_IN,
+      page: () => SignInView(),
+      binding: SignInBinding(),
     ),
   ];
 }

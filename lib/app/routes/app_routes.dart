@@ -14,9 +14,9 @@ abstract class Routes {
   static const EVENT_DETAIL = _Paths.EVENT_DETAIL;
   static const PLAY = _Paths.PLAY;
   static const PLAY_LIST = _Paths.PLAY_LIST;
-  static const VIEW_SIGN_IN = _Paths.VIEW_SIGN_IN;
   static const VIEW_SPLASH = _Paths.VIEW_SPLASH;
   static const ARTIST = _Paths.ARTIST;
+  static const SIGN_IN = _Paths.SIGN_IN;
 }
 
 abstract class _Paths {
@@ -32,7 +32,7 @@ abstract class _Paths {
   static const EVENT_DETAIL = '/event-detail';
   static const PLAY = '/play';
   static const PLAY_LIST = '/play-list';
-  static const VIEW_SIGN_IN = '/view-sign-in';
   static const VIEW_SPLASH = '/view-splash';
   static const ARTIST = '/artist';
+  static const SIGN_IN = '/sign-in';
 }

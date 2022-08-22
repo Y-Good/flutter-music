@@ -83,16 +83,26 @@ class GEventCard extends StatelessWidget {
                           child: Stack(
                             clipBehavior: Clip.none,
                             children: const [
-                              Positioned(child: GAvatar(size: 22, radius: 11)),
+                              Positioned(
+                                  child: GAvatar(
+                                size: 22,
+                                radius: 11,
+                                border: true,
+                              )),
                               Positioned(
                                 left: 12,
-                                child: GAvatar(size: 22, radius: 11),
+                                child: GAvatar(
+                                  size: 22,
+                                  radius: 11,
+                                  border: true,
+                                ),
                               ),
                               Positioned(
                                 left: 24,
                                 child: GAvatar(
                                   size: 22,
                                   radius: 11,
+                                  border: true,
                                 ),
                               ),
                             ],

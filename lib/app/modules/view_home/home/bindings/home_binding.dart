@@ -1,4 +1,4 @@
-import 'package:g_music/app/data/models/providers/user_provider.dart';
+import 'package:g_music/app/data/models/providers/personalized_provider.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -9,6 +9,8 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(),
     );
-    Get.lazyPut<UserProvider>(() => UserProvider());
+    Get.lazyPut<PersonalizedProvider>(
+      () => PersonalizedProvider(),
+    );
   }
 }

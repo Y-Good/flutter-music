@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:g_music/app/data/models/user_model.dart';
+import 'package:g_music/app/routes/app_pages.dart';
+import 'package:g_music/app/utils/g_storage.dart';
+import 'package:get/get.dart';
 
 import '../config/g_color.dart';
 import 'g_avatar.dart';
@@ -34,9 +38,20 @@ class GAppBar extends AppBar {
               ),
           actions: actions ??
               [
-                const Padding(
-                  padding: EdgeInsets.only(right: 16),
-                  child: Center(child: GAvatar(size: 40, radius: 20)),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.SIGN_IN);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: Center(
+                      child: GAvatar(
+                        url: User.fromJson(GStorage.read('user')).avatarUrl,
+                        size: 40,
+                        radius: 20,
+                      ),
+                    ),
+                  ),
                 )
               ],
           backgroundColor: backgroundColor ?? GColor.backgroundColor,

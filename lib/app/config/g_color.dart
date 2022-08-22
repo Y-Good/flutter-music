@@ -5,6 +5,7 @@ class GColor {
   static Color backgroundColor = const Color(0xFFFAFAFA);
   //二级
   static Color secondary0 = const Color(0xFF6F6F6F);
+  static Color secondary300 = const Color(0xFF90A3BF);
   static Color secondary900 = const Color(0xFF040815);
   //light
   static Color primary = const Color(0xFF0957DE);

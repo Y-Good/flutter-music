@@ -1,13 +1,14 @@
-import 'package:g_music/app/data/models/providers/user_provider.dart';
-import 'package:g_music/app/data/models/user_model.dart';
+import 'package:g_music/app/data/models/personalized_model.dart';
+import 'package:g_music/app/data/models/providers/personalized_provider.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController with StateMixin<User> {
-  final provider = Get.find<UserProvider>();
+class HomeController extends GetxController {
+  final PersonalizedProvider provider = Get.find<PersonalizedProvider>();
+  final personList = <Personalized>[].obs;
+
   @override
-  void onInit() {
-    print('object');
-    provider.getUser();
+  Future<void> onInit() async {
+    personList.value = await provider.getPersonalized();
     super.onInit();
   }
 }
