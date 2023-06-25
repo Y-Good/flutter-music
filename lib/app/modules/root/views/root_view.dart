@@ -6,6 +6,8 @@ import '../../../components/g_bottom_navigation_bar.dart';
 import '../controllers/root_controller.dart';
 
 class RootView extends GetView<RootController> {
+  const RootView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final c = controller;

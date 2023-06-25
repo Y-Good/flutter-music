@@ -1,6 +1,6 @@
-import 'package:g_music/app/data/models/providers/personalized_provider.dart';
 import 'package:get/get.dart';
 
+import '../../../../models/providers/personalized_provider.dart';
 import '../controllers/home_controller.dart';
 
 class HomeBinding extends Bindings {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g_music/app/components/components.dart';
 import 'package:g_music/app/components/g_avatar.dart';
 import 'package:get/get.dart';
 
@@ -6,30 +7,13 @@ import '../../../../config/g_color.dart';
 import '../controllers/collect_controller.dart';
 
 class CollectView extends GetView<CollectController> {
+  const CollectView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final c = controller;
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 48,
-        backgroundColor: GColor.backgroundColor,
-        elevation: 0,
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 16),
-          child: Center(
-            child: Text(
-              '发现',
-              style: TextStyle(color: Colors.black, fontSize: 20),
-            ),
-          ),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Center(child: GAvatar(size: 40, radius: 20)),
-          )
-        ],
-      ),
+      appBar: GAppBar(leadingText: '收藏'),
       body: GridView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -11,6 +11,8 @@ import '../../../../config/g_iconfont.dart';
 import '../controllers/play_controller.dart';
 
 class PlayView extends GetView<PlayController> {
+  PlayView({Key? key}) : super(key: key);
+
   final c = Get.find<PlayController>();
 
   @override
@@ -95,8 +97,9 @@ class PlayView extends GetView<PlayController> {
                       ),
                       const SizedBox(height: 16),
                       Expanded(
-                        flex: 1,
-                        child: Container(
+                        child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
                           child: ListView.builder(
                             itemBuilder: (_, idx) => Padding(
                               padding: const EdgeInsets.symmetric(
@@ -117,7 +120,7 @@ class PlayView extends GetView<PlayController> {
                                             MainAxisAlignment.spaceAround,
                                         children: [
                                           Text(
-                                            'Don’t Start Now',
+                                            '${idx}//Don’t Start Now',
                                             style: TextStyle(fontSize: 14),
                                           ),
                                           Text(
@@ -136,7 +139,7 @@ class PlayView extends GetView<PlayController> {
                               ),
                             ),
                             itemCount: 20,
-                            shrinkWrap: true,
+                            // shrinkWrap: true,
                           ),
                         ),
                       )
@@ -184,111 +187,121 @@ class PlayView extends GetView<PlayController> {
                 filter: ImageFilter.blur(sigmaX: 34, sigmaY: 34),
                 child: DefaultTextStyle(
                   style: TextStyle(color: GColor.white),
-                  child: Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Obx(
+                    () {
+                      return Column(
                         children: [
-                          Column(
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                'Blinding Lights',
-                                style: TextStyle(fontSize: 16),
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Blinding Lights',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text(
+                                    'The Weeknd',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white70,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(height: 8),
-                              Text(
-                                'The Weeknd',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white70,
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: c.addPlayList,
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 20,
                                 ),
+                              ),
+                              const SizedBox(width: 16),
+                              const Icon(
+                                Icons.sort,
+                                color: Colors.white,
+                                size: 20,
                               ),
                             ],
                           ),
-                          const Spacer(),
-                          GestureDetector(
-                            onTap: c.addPlayList,
-                            child: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 20,
-                            ),
+                          const SizedBox(height: 16),
+                          Slider(
+                            value: c.currentDuration.value.inSeconds.toDouble(),
+                            min: 0,
+                            max: c.totalDuration.inSeconds.toDouble(),
+                            onChanged: c.sliderProgress,
+                            activeColor: GColor.primary,
+                            inactiveColor: Colors.white70,
                           ),
-                          const SizedBox(width: 16),
-                          const Icon(
-                            Icons.sort,
-                            color: Colors.white,
-                            size: 20,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(c.currentTime.value),
+                              Text(c.totalTime.value)
+                            ],
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Slider(
-                        value: 54,
-                        min: 0,
-                        max: 100,
-                        onChanged: (v) {},
-                        activeColor: GColor.primary,
-                        inactiveColor: Colors.white70,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text('01:23'), Text('03:23')],
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Icon(Icons.refresh, color: Colors.white),
-                          Icon(Icons.skip_previous, color: Colors.white),
-                          Icon(
-                            Icons.play_circle_fill_rounded,
-                            size: 48,
-                            color: GColor.primary,
-                          ),
-                          Icon(Icons.skip_next, color: Colors.white),
-                          Icon(Icons.shuffle_rounded, color: Colors.white),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.volume_mute_rounded,
-                            size: 24,
-                            color: GColor.white,
-                          ),
-                          Obx(() {
-                            return SliderTheme(
-                              data: SliderThemeData(
-                                trackHeight: 4,
-                                activeTrackColor: GColor.white,
-                                inactiveTrackColor: Colors.white70,
-                                overlayColor: Colors.transparent,
-                                thumbColor: GColor.white,
-                                thumbShape: const RoundSliderThumbShape(
-                                  enabledThumbRadius: 8,
+                          const SizedBox(height: 12),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Icon(Icons.refresh, color: Colors.white),
+                              Icon(Icons.skip_previous, color: Colors.white),
+                              GestureDetector(
+                                onTap: c.onPlay,
+                                child: Icon(
+                                  c.isPlay.value
+                                      ? Icons.pause_circle_filled_rounded
+                                      : Icons.play_circle_fill_rounded,
+                                  size: 48,
+                                  color: GColor.primary,
                                 ),
                               ),
-                              child: Slider(
-                                value: c.volume.value,
-                                min: 0,
-                                max: 100,
-                                onChanged: (v) => c.sliderVolume(v),
-                              ),
-                            );
-                          }),
-                          Icon(
-                            Icons.volume_down_rounded,
-                            size: 24,
-                            color: GColor.white,
+                              Icon(Icons.skip_next, color: Colors.white),
+                              Icon(Icons.shuffle_rounded, color: Colors.white),
+                            ],
                           ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.volume_mute_rounded,
+                                size: 24,
+                                color: GColor.white,
+                              ),
+                              SliderTheme(
+                                data: SliderThemeData(
+                                  trackHeight: 4,
+                                  activeTrackColor: GColor.white,
+                                  inactiveTrackColor: Colors.white70,
+                                  overlayColor: Colors.transparent,
+                                  thumbColor: GColor.white,
+                                  thumbShape: const RoundSliderThumbShape(
+                                    enabledThumbRadius: 8,
+                                  ),
+                                ),
+                                child: Slider(
+                                  value: c.volume.value,
+                                  min: 0,
+                                  max: 100,
+                                  onChanged: (v) => c.sliderVolume(v),
+                                ),
+                              ),
+                              Icon(
+                                Icons.volume_down_rounded,
+                                size: 24,
+                                color: GColor.white,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
                         ],
-                      ),
-                      const SizedBox(height: 8),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ),

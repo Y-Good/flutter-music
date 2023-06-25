@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:g_music/app/data/models/user_model.dart';
 import 'package:g_music/app/routes/app_pages.dart';
 import 'package:g_music/app/utils/g_storage.dart';
 import 'package:get/get.dart';
 
 import '../config/g_color.dart';
+import '../models/user_model.dart';
 import 'g_avatar.dart';
 
 ///
@@ -40,13 +40,15 @@ class GAppBar extends AppBar {
               [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(Routes.SIGN_IN);
+                    Get.toNamed(Routes.LOGIN);
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 16),
                     child: Center(
                       child: GAvatar(
-                        url: User.fromJson(GStorage.read('user')).avatarUrl,
+                        url: User.fromJson(
+                          GStorage.read<Map<String, dynamic>>('user') ?? {},
+                        ).avatarUrl,
                         size: 40,
                         radius: 20,
                       ),
@@ -55,7 +57,7 @@ class GAppBar extends AppBar {
                 )
               ],
           backgroundColor: backgroundColor ?? GColor.backgroundColor,
-          toolbarHeight: toolbarHeight ?? 48,
+          toolbarHeight: toolbarHeight ?? 56,
           elevation: 0,
           bottom: bottom,
         );

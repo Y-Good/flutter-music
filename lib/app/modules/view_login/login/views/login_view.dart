@@ -5,10 +5,10 @@ import 'package:g_music/app/components/g_button.dart';
 import 'package:g_music/app/config/g_color.dart';
 import 'package:get/get.dart';
 
-import '../controllers/sign_in_controller.dart';
+import '../controllers/login_controller.dart';
 
-class SignInView extends GetView<SignInController> {
-  const SignInView({Key? key}) : super(key: key);
+class LoginView extends GetView<LoginController> {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class SignInView extends GetView<SignInController> {
       backgroundColor: GColor.white,
       extendBodyBehindAppBar: false,
       appBar: AppBar(
-        automaticallyImplyLeading: true,
+        leading: BackButton(color: Colors.black),
         backgroundColor: Colors.transparent,
         elevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -29,18 +29,19 @@ class SignInView extends GetView<SignInController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 64),
                 Text(
-                  "Sign In",
+                  "登录",
                   style: TextStyle(fontSize: 24, color: GColor.secondary900),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "Please sign in to your account ",
+                  "请输入您的账号",
                   style: TextStyle(fontSize: 16, color: GColor.secondary0),
                 ),
                 const SizedBox(height: 56),
                 Text(
-                  "Email",
+                  "手机",
                   style: TextStyle(fontSize: 16, color: GColor.secondary300),
                 ),
                 const SizedBox(height: 12),
@@ -58,7 +59,7 @@ class SignInView extends GetView<SignInController> {
                 ),
                 const SizedBox(height: 32),
                 Text(
-                  "Password",
+                  "密码",
                   style: TextStyle(fontSize: 16, color: GColor.secondary300),
                 ),
                 const SizedBox(height: 12),
@@ -85,7 +86,7 @@ class SignInView extends GetView<SignInController> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    "Forgot Password?",
+                    "忘记密码?",
                     style: TextStyle(color: GColor.primary),
                   ),
                 ),
@@ -97,7 +98,7 @@ class SignInView extends GetView<SignInController> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GButton(
-          label: 'Sign In',
+          label: '登录',
           labelStyle: TextStyle(fontSize: 16, color: GColor.white),
           backgroundColor: GColor.primary,
           borderRadius: 8,

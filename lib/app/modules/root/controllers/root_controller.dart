@@ -8,6 +8,7 @@ import 'package:g_music/app/modules/view_search/search/views/search_view.dart';
 import 'package:get/get.dart';
 
 import '../../../components/g_bottom_navigation_bar.dart';
+import '../../../utils/g_utils.dart';
 
 class RootController extends GetxController {
   List<Widget> pages = [
@@ -20,7 +21,9 @@ class RootController extends GetxController {
 
   List<GBottomNavigationBarItem> navBarList = [
     GBottomNavigationBarItem(
-        const Icon(GIconFont.iconHome), const Icon(GIconFont.iconHomeFill)),
+      const Icon(GIconFont.iconHome),
+      const Icon(GIconFont.iconHomeFill),
+    ),
     GBottomNavigationBarItem(
       const Icon(GIconFont.iconTicket),
       const Icon(GIconFont.iconTicketFill),
@@ -40,4 +43,12 @@ class RootController extends GetxController {
   ];
 
   final index = 0.obs;
+
+
+  @override
+  void onReady() {
+    GUtils.openFloatPlay();
+    // TODO: implement onReady
+    super.onReady();
+  }
 }

@@ -32,4 +32,7 @@ class GIconFont {
       IconData(0xe610, fontFamily: 'iconfont');
   static const IconData iconFolderFill =
       IconData(0xe60f, fontFamily: 'iconfont');
+
+  static const IconData iconNext = IconData(0xe615, fontFamily: 'iconfont');
+  static const IconData iconPrevious = IconData(0xe616, fontFamily: 'iconfont');
 }

@@ -1,6 +1,8 @@
-import 'package:g_music/app/data/models/personalized_model.dart';
-import 'package:g_music/app/data/models/providers/personalized_provider.dart';
+
 import 'package:get/get.dart';
+
+import '../../../../models/personalized_model.dart';
+import '../../../../models/providers/personalized_provider.dart';
 
 class HomeController extends GetxController {
   final PersonalizedProvider provider = Get.find<PersonalizedProvider>();

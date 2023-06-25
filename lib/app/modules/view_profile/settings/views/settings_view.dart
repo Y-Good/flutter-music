@@ -13,7 +13,8 @@ class SettingsView extends GetView<SettingsController> {
     final c = controller;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
+        leading: BackButton(color: Colors.black),
         backgroundColor: Color(0xFFFAFAFA),
         title: const Text(
           'Settings',

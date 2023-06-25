@@ -2,23 +2,72 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:g_music/app/config/g_color.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 
 import '../../../../components/g_avatar.dart';
+import '../../../../utils/g_utils.dart';
 
 class PlayController extends GetxController {
+  AudioPlayer player = AudioPlayer();
+  final currentDuration = Duration.zero.obs;
+  Duration totalDuration = Duration.zero;
+
   RxDouble volume = 0.0.obs;
   RxBool isOpenLyrics = true.obs;
   RxDouble tHeight = 0.0.obs;
+  final isPlay = false.obs;
   double tStart = 0;
   double tEnd = 0;
+
+  final totalTime = '00:00'.obs;
+  final currentTime = '00:00'.obs;
+
   @override
-  void onInit() {
+  Future<void> onInit() async {
+    GUtils.closeFloatPlay();
+    totalDuration = await player.setUrl(
+          'https://cm-sycdn.kuwo.cn/6b0ddd6998694fd8dfe8d881a9b79cb4/64979ab6/resource/n1/16/52/2340885041.mp3',
+        ) ??
+        Duration.zero;
+    totalTime.value = totalDuration.toString().split('.')[0].substring(2);
     tHeight.value = -Get.height / 1.9 + 70;
+    player.positionStream.listen((event) {
+      currentDuration.value = event;
+      currentTime.value = event.toString().split('.')[0].substring(2);
+    });
+    player.processingStateStream.listen((event) {
+      if (event == ProcessingState.completed) {
+        isPlay.value = false;
+        player.stop();
+      }
+    });
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    GUtils.openFloatPlay();
+    player.dispose();
+    super.onClose();
+  }
+
+  Future<void> onPlay() async {
+    if (isPlay.value) {
+      isPlay.value = false;
+      await player.pause();
+    } else {
+      isPlay.value = true;
+      await player.play();
+    }
   }
 
   void sliderVolume(double v) {
     volume.value = v;
+  }
+
+  void sliderProgress(double v) {
+    currentDuration.value = Duration(seconds: v.toInt());
+    player.seek(Duration(seconds: v.toInt()));
   }
 
   void openLyrics(bool v) {
@@ -26,8 +75,6 @@ class PlayController extends GetxController {
   }
 
   void upTracks(DragUpdateDetails d) {
-    // print(d.delta.dy);
-    // print(tHeight.value);
     tHeight.value -= d.delta.dy;
     if (tHeight.value >= 0) {
       tHeight.value = 0;

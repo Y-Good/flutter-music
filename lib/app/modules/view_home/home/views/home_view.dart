@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:g_music/app/components/g_appbar.dart';
-import 'package:g_music/app/components/g_section_title.dart';
-import 'package:g_music/app/components/page/g_event_card.dart';
+import 'package:g_music/app/components/components.dart';
+import 'package:g_music/app/models/models.dart';
 import 'package:g_music/app/modules/view_home/home/widgets/play_card.dart';
 import 'package:get/get.dart';
-
-import '../../../../components/page/g_scroll_row.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {

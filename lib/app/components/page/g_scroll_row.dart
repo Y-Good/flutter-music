@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g_music/app/components/g_section_title.dart';
-import 'package:g_music/app/data/models/personalized_model.dart';
-import 'package:get/get.dart';
 
+import '../../models/personalized_model.dart';
 import '../g_avatar.dart';
 
 ///
@@ -22,7 +21,7 @@ class GScrollRow extends StatelessWidget {
   final String? title;
   final String? subTitle;
   final VoidCallback? onTap;
-  final RxList<Personalized>? datas;
+  final List<Personalized>? datas;
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +49,23 @@ class GScrollRow extends StatelessWidget {
                           radius: 4,
                         ),
                         const SizedBox(height: 12),
-                        Text(
-                          datas?[index].name ?? 'Blinding Lights',
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontSize: 14),
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            datas?[index].name ?? 'Blinding Lights',
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 14),
+                          ),
                         ),
                         const SizedBox(height: 6),
-                        const Text(
-                          'The Weeknd',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF6F6F6F),
-                          ),
-                        )
+                        // const Text(
+                        //   'The Weeknd',
+                        //   style: TextStyle(
+                        //     fontSize: 12,
+                        //     color: Color(0xFF6F6F6F),
+                        //   ),
+                        // )
                       ],
                     ),
                   ),

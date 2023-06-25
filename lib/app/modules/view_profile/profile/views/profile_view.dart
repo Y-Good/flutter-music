@@ -9,60 +9,7 @@ import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  Widget _buildColumnText(String count, String label) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Column(
-        children: [
-          Text(
-            count,
-            style: TextStyle(fontSize: 16),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(fontSize: 14, color: Colors.grey),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPlayListCard() {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: GColor.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: GColor.primary.withOpacity(0.03),
-            blurRadius: 60,
-            spreadRadius: 0,
-            offset: const Offset(0, 6),
-          )
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          GAvatar(
-            size: 130,
-            radius: 4,
-            url:
-                'https://img1.baidu.com/it/u=4016017873,3810764064&fm=253&fmt=auto&app=138&f=JPEG',
-          ),
-          SizedBox(height: 16),
-          Text('Your Artist', style: TextStyle(fontSize: 14)),
-          SizedBox(height: 8),
-          Text(
-            '3 Followers',
-            style: TextStyle(fontSize: 12, color: Colors.grey),
-          ),
-        ],
-      ),
-    );
-  }
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -188,6 +135,61 @@ class ProfileView extends GetView<ProfileController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildColumnText(String count, String label) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Column(
+        children: [
+          Text(
+            count,
+            style: TextStyle(fontSize: 16),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(fontSize: 14, color: Colors.grey),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPlayListCard() {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: GColor.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: GColor.primary.withOpacity(0.03),
+            blurRadius: 60,
+            spreadRadius: 0,
+            offset: const Offset(0, 6),
+          )
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          GAvatar(
+            size: 130,
+            radius: 4,
+            url:
+                'https://img1.baidu.com/it/u=4016017873,3810764064&fm=253&fmt=auto&app=138&f=JPEG',
+          ),
+          SizedBox(height: 16),
+          Text('Your Artist', style: TextStyle(fontSize: 14)),
+          SizedBox(height: 8),
+          Text(
+            '3 Followers',
+            style: TextStyle(fontSize: 12, color: Colors.grey),
+          ),
+        ],
       ),
     );
   }

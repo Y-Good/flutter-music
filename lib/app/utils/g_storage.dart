@@ -7,20 +7,29 @@ import 'package:get_storage/get_storage.dart';
 /// @UpdateDate: 2022-08-08 13:49
 class GStorage {
   GStorage._();
-  static GetStorage storage = GetStorage();
+
+  static GetStorage _storage = GetStorage();
 
   ///写入
-  static void write(String key, dynamic value) {
-    storage.write(key, value);
+  static Future<void> write(String key, dynamic value) async {
+    try {
+      await _storage.write(key, value);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   ///获取
-  static dynamic read<T>(String key) {
-    return storage.read<T>(key);
+  static T? read<T>(String key) {
+    try {
+      return _storage.read<T>(key);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   ///删
   static void remove(String key) {
-    storage.remove(key);
+    _storage.remove(key);
   }
 }

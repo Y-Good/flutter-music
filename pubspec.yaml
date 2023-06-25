@@ -9,6 +9,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.5
   get_storage: ^2.0.3
+  just_audio: ^0.9.34
   flutter:
     sdk: flutter
 
@@ -18,9 +19,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  uses-material-design: true
   fonts:
     - family: iconfont
       fonts:
         - asset: assets/iconfont.ttf
+  uses-material-design: true
 

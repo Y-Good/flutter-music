@@ -9,4 +9,10 @@ class UserApi {
 
   ///登录
   static const String login = "/login/cellphone";
+
+  /// 获取验证码
+  static const String captchaSent = "/captcha/sent";
+
+  /// 验证验证码
+  static const String captchaVerify = "/captcha/verify";
 }

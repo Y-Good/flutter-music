@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class GBottomNavigationBarItem {
   Widget icon;
   Widget activeIcon;
+
   GBottomNavigationBarItem(this.icon, this.activeIcon);
 }
 
@@ -19,6 +20,7 @@ class GBottomNavigationBar extends StatefulWidget {
 
   final Color? selectedItemColor;
   final Color? unselectedItemColor;
+
   const GBottomNavigationBar({
     Key? key,
     required this.currentIndex,
@@ -59,13 +61,15 @@ class _GBottomNavigationBarState extends State<GBottomNavigationBar> {
                   size: 24,
                 ),
                 child: _currentIndex == index
-                    ? Container(
-                        padding: const EdgeInsets.all(3),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF004ED5).withOpacity(0.19),
-                          borderRadius: BorderRadius.circular(24),
+                    ? UnconstrainedBox(
+                        child: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF004ED5).withOpacity(0.19),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: widget.items[index].activeIcon,
                         ),
-                        child: widget.items[index].activeIcon,
                       )
                     : widget.items[index].icon,
               ),

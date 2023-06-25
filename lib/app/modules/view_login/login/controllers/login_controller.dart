@@ -1,10 +1,11 @@
-import 'package:g_music/app/data/models/providers/user_provider.dart';
+
 import 'package:get/get.dart';
 
-import '../../../../data/models/user_model.dart';
+import '../../../../models/providers/user_provider.dart';
+import '../../../../models/user_model.dart';
 import '../../../../utils/g_storage.dart';
 
-class SignInController extends GetxController {
+class LoginController extends GetxController {
   final userProvider = Get.find<UserProvider>();
   User? user;
 
